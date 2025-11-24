@@ -12,6 +12,7 @@ ENV/
 # Data files (keep CSVs, ignore large JSON)
 *.json
 !package*.json
+!usecase_config*.json
 
 # IDE
 .vscode/
