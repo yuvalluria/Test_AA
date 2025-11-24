@@ -28,4 +28,7 @@ Thumbs.db
 *.tmp
 *.log
 
+# Output CSV files (can be regenerated)
+best_models_*.csv
+
 
