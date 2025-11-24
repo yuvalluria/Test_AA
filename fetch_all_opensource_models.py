@@ -14,11 +14,18 @@ BASE_URL = "https://artificialanalysis.ai/api/v2"
 
 # Closed/proprietary models to exclude
 CLOSED_MODELS = [
-    "grok 2", "grok-2", "grok2",
     "grok 3", "grok-3", "grok3",
+    "grok 4", "grok-4", "grok4", "grok 4.1", "grok-4.1", "grok4.1",
+    "grok code", "grok-code",
+    "grok beta", "grok-beta",
     "gpt-4", "gpt-3.5", "gpt-5",
     "o1", "o1-mini", "o1-pro", "o3", "o3-mini", "o3-pro", "o4",
     "gemini", "claude", "sonnet",
+]
+
+# Only these Grok models are open-source
+OPEN_SOURCE_GROK_MODELS = [
+    "grok-1", "grok 2 (dec '24)", "grok 2 (dec 24)", "grok-2 (dec '24)",
 ]
 
 # Open-source providers
@@ -42,6 +49,16 @@ def get_headers():
 def is_closed_model(model_name: str) -> bool:
     """Check if model is closed/proprietary"""
     model_lower = model_name.lower()
+    
+    # Special handling for Grok models - only Grok-1 and Grok 2 (Dec '24) are open-source
+    if "grok" in model_lower:
+        # Check if it's one of the allowed open-source Grok models
+        for allowed in OPEN_SOURCE_GROK_MODELS:
+            if allowed.lower() in model_lower:
+                return False
+        # All other Grok models are closed
+        return True
+    
     for closed in CLOSED_MODELS:
         if closed.lower() in model_lower:
             # Exception: gpt-oss-* models are open-source
@@ -53,6 +70,16 @@ def is_closed_model(model_name: str) -> bool:
 def is_open_source(model: Dict) -> bool:
     """Check if model is open-source"""
     model_name = model.get("name", "")
+    model_lower = model_name.lower()
+    
+    # Special handling for Grok models - only Grok-1 and Grok 2 (Dec '24) are open-source
+    if "grok" in model_lower:
+        # Check if it's one of the allowed open-source Grok models
+        for allowed in OPEN_SOURCE_GROK_MODELS:
+            if allowed.lower() in model_lower:
+                return True
+        # All other Grok models are closed
+        return False
     
     # Exclude closed models
     if is_closed_model(model_name):
@@ -66,7 +93,6 @@ def is_open_source(model: Dict) -> bool:
         return True
     
     # Check if model has open-source indicators
-    model_lower = model_name.lower()
     open_source_indicators = [
         "llama", "qwen", "deepseek", "mistral", "mixtral", "codestral",
         "devstral", "magistral", "ministral", "pixtral", "phi", "gemma",

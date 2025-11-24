@@ -14,8 +14,15 @@ PROPRIETARY_MODELS = [
     "Gemma 3", "Gemma 2",  # These might be open-source, need to check
     "PALM-2",
     "Claude", "Sonnet",  # Anthropic models
-    "Grok 2", "Grok-2", "Grok2",  # Closed Grok models
     "Grok 3", "Grok-3", "Grok3",  # Closed Grok models
+    "Grok 4", "Grok-4", "Grok4", "Grok 4.1", "Grok-4.1", "Grok4.1",  # Closed Grok models
+    "Grok Code", "Grok-Code", "GrokCode",  # Closed Grok models
+    "Grok Beta", "Grok-Beta", "GrokBeta",  # Closed Grok models
+]
+
+# Only these Grok models are open-source
+OPEN_SOURCE_GROK_MODELS = [
+    "Grok-1", "Grok 2 (Dec '24)", "Grok 2 (Dec 24)", "Grok-2 (Dec '24)",
 ]
 
 # Only include models from these providers that are known to be open-source
@@ -75,9 +82,16 @@ def is_open_source(model_name: str, provider: str) -> bool:
     if "claude" in model_lower or "sonnet" in model_lower:
         return False
     
-    # Exclude closed Grok models (Grok 2, 3) but keep Grok-1 and Grok 4 if open-source
-    if any(x in model_lower for x in ["grok 2", "grok-2", "grok2", "grok 3", "grok-3", "grok3"]):
-        return False
+    # Special handling for Grok models - only Grok-1 and Grok 2 (Dec '24) are open-source
+    if "grok" in model_lower:
+        # Check if it's one of the allowed open-source Grok models
+        is_allowed = False
+        for allowed in OPEN_SOURCE_GROK_MODELS:
+            if allowed.lower() in model_lower:
+                is_allowed = True
+                break
+        if not is_allowed:
+            return False  # Exclude all other Grok models
     
     # Check for open-source indicators
     for indicator in OPEN_SOURCE_INDICATORS:

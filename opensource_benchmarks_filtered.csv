@@ -25,11 +25,6 @@ DeepSeek V3.2 Exp (Non-reasoning),DeepSeek,DeepSeek training dataset,83.60%,73.8
 DeepSeek R1 0528 (May '25),DeepSeek,DeepSeek training dataset,84.90%,81.30%,14.90%,77.00%,40.30%,76.00%,39.60%,54.70%,14.90%,36.50%
 DeepSeek V3.1 Terminus (Non-reasoning),DeepSeek,DeepSeek training dataset,83.60%,75.10%,8.40%,52.90%,32.10%,53.70%,41.20%,43.30%,29.80%,37.10%
 DeepSeek V3.1 Terminus (Reasoning),DeepSeek,DeepSeek training dataset,85.10%,79.20%,15.20%,79.80%,40.60%,89.70%,57.00%,65.00%,28.40%,37.10%
-Grok 4 Fast (Non-reasoning),xAI,xAI training dataset,73.00%,60.60%,5.00%,40.10%,32.90%,41.30%,37.70%,20.00%,11.30%,63.70%
-Grok Code Fast 1,xAI,xAI training dataset,79.30%,72.70%,7.50%,65.70%,36.20%,43.30%,41.40%,48.30%,16.30%,75.70%
-Grok 4.1 Fast (Reasoning),xAI,xAI training dataset,85.40%,85.30%,17.60%,82.20%,44.20%,89.30%,52.70%,68.00%,22.70%,93.30%
-Grok 4 Fast (Reasoning),xAI,xAI training dataset,85.00%,84.70%,17.00%,83.20%,44.20%,89.70%,50.50%,64.70%,17.70%,65.80%
-Grok 4,xAI,xAI training dataset,86.60%,87.70%,23.90%,81.90%,45.70%,92.70%,53.70%,68.00%,37.60%,74.90%
 Phi-4,Microsoft Azure,Microsoft Azure training dataset,71.40%,57.50%,4.10%,23.10%,26.00%,18.00%,23.50%,0.00%,3.50%,0.00%
 Phi-4 Mini Instruct,Microsoft Azure,Microsoft Azure training dataset,46.50%,33.10%,4.20%,12.60%,10.80%,6.70%,21.10%,13.70%,0.00%,8.20%
 Phi-4 Multimodal Instruct,Microsoft Azure,Microsoft Azure training dataset,48.50%,31.50%,4.40%,13.10%,11.00%,N/A,N/A,N/A,N/A,N/A
@@ -159,7 +154,7 @@ DeepSeek Coder V2 Lite Instruct,DeepSeek,DeepSeek training dataset,42.90%,31.90%
 Sonar Pro,Perplexity,Perplexity training dataset,75.50%,57.80%,7.90%,27.50%,22.60%,N/A,N/A,N/A,N/A,N/A
 Sonar,Perplexity,Perplexity training dataset,68.90%,47.10%,7.30%,29.50%,22.90%,N/A,N/A,N/A,N/A,N/A
 Sonar Reasoning,Perplexity,Perplexity training dataset,N/A,62.30%,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
-Grok Beta,xAI,xAI training dataset,70.30%,47.10%,4.70%,24.10%,29.50%,N/A,N/A,N/A,N/A,N/A
+Grok 2 (Dec '24),xAI,xAI training dataset,70.90%,51.00%,3.80%,26.70%,28.50%,N/A,N/A,N/A,N/A,N/A
 OpenChat 3.5 (1210),OpenChat,OpenChat training dataset,31.00%,23.00%,4.80%,11.50%,N/A,N/A,N/A,N/A,N/A,N/A
 Phi-3 Medium Instruct 14B,Microsoft Azure,Microsoft Azure training dataset,54.30%,32.60%,4.50%,15.00%,11.80%,1.30%,21.50%,3.00%,0.00%,0.00%
 Phi-3 Mini Instruct 3.8B,Microsoft Azure,Microsoft Azure training dataset,43.50%,31.90%,4.40%,11.60%,9.00%,0.30%,23.90%,2.00%,0.00%,0.00%

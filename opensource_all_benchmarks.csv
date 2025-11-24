@@ -35,12 +35,6 @@ DeepSeek V3.1 Terminus (Non-reasoning),DeepSeek,DeepSeek training dataset,N/A,53
 DeepSeek V3.1 Terminus (Reasoning),DeepSeek,DeepSeek training dataset,N/A,89.70%,49.60%,57.70%,89.70%,79.20%,15.20%,57.00%,65.00%,79.80%,N/A,85.10%,40.60%,37.10%,28.40%
 DeepSeek-OCR,DeepSeek,DeepSeek training dataset,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 R1 1776,Perplexity,Perplexity training dataset,N/A,N/A,N/A,19.10%,N/A,N/A,N/A,N/A,N/A,N/A,95.40%,N/A,N/A,N/A,N/A
-Grok 4 Fast (Non-reasoning),xAI,xAI training dataset,N/A,41.30%,28.10%,38.60%,41.30%,60.60%,5.00%,37.70%,20.00%,40.10%,N/A,73.00%,32.90%,63.70%,11.30%
-Grok Code Fast 1,xAI,xAI training dataset,N/A,43.30%,39.40%,48.60%,43.30%,72.70%,7.50%,41.40%,48.30%,65.70%,N/A,79.30%,36.20%,75.70%,16.30%
-Grok 4.1 Fast (Reasoning),xAI,xAI training dataset,N/A,89.30%,49.70%,64.10%,89.30%,85.30%,17.60%,52.70%,68.00%,82.20%,N/A,85.40%,44.20%,93.30%,22.70%
-Grok 4 Fast (Reasoning),xAI,xAI training dataset,N/A,89.70%,48.40%,60.30%,89.70%,84.70%,17.00%,50.50%,64.70%,83.20%,N/A,85.00%,44.20%,65.80%,17.70%
-Grok 4,xAI,xAI training dataset,94.30%,92.70%,55.10%,65.30%,92.70%,87.70%,23.90%,53.70%,68.00%,81.90%,99.00%,86.60%,45.70%,74.90%,37.60%
-Grok 4.1 Fast (Non-reasoning),xAI,xAI training dataset,N/A,34.30%,27.70%,38.30%,34.30%,63.70%,5.00%,36.50%,22.00%,39.90%,N/A,74.30%,29.60%,63.70%,13.50%
 Phi-4,Microsoft Azure,Microsoft Azure training dataset,14.30%,18.00%,17.60%,22.70%,18.00%,57.50%,4.10%,23.50%,0.00%,23.10%,81.00%,71.40%,26.00%,0.00%,3.50%
 Phi-4 Mini Instruct,Microsoft Azure,Microsoft Azure training dataset,3.00%,6.70%,7.80%,15.70%,6.70%,33.10%,4.20%,21.10%,13.70%,12.60%,69.60%,46.50%,10.80%,8.20%,0.00%
 Phi-4 Multimodal Instruct,Microsoft Azure,Microsoft Azure training dataset,9.30%,N/A,N/A,12.40%,N/A,31.50%,4.40%,N/A,N/A,13.10%,69.30%,48.50%,11.00%,N/A,N/A
@@ -182,7 +176,7 @@ Sonar Pro,Perplexity,Perplexity training dataset,29.00%,N/A,N/A,28.20%,N/A,57.80
 Sonar,Perplexity,Perplexity training dataset,48.70%,N/A,N/A,28.80%,N/A,47.10%,7.30%,N/A,N/A,29.50%,81.70%,68.90%,22.90%,N/A,N/A
 Sonar Reasoning Pro,Perplexity,Perplexity training dataset,79.00%,N/A,N/A,46.30%,N/A,N/A,N/A,N/A,N/A,N/A,95.70%,N/A,N/A,N/A,N/A
 Sonar Reasoning,Perplexity,Perplexity training dataset,77.00%,N/A,N/A,34.20%,N/A,62.30%,N/A,N/A,N/A,N/A,92.10%,N/A,N/A,N/A,N/A
-Grok Beta,xAI,xAI training dataset,10.30%,N/A,N/A,23.00%,N/A,47.10%,4.70%,N/A,N/A,24.10%,73.70%,70.30%,29.50%,N/A,N/A
+Grok 2 (Dec '24),xAI,xAI training dataset,13.30%,N/A,N/A,24.70%,N/A,51.00%,3.80%,N/A,N/A,26.70%,77.80%,70.90%,28.50%,N/A,N/A
 OpenChat 3.5 (1210),OpenChat,OpenChat training dataset,0.00%,N/A,N/A,5.40%,N/A,23.00%,4.80%,N/A,N/A,11.50%,30.70%,31.00%,N/A,N/A,N/A
 Phi-3 Medium Instruct 14B,Microsoft Azure,Microsoft Azure training dataset,1.30%,1.30%,8.90%,14.40%,1.30%,32.60%,4.50%,21.50%,3.00%,15.00%,46.30%,54.30%,11.80%,0.00%,0.00%
 Phi-3 Mini Instruct 3.8B,Microsoft Azure,Microsoft Azure training dataset,4.00%,0.30%,6.90%,12.70%,30.00%,31.90%,4.40%,23.90%,2.00%,11.60%,45.70%,43.50%,9.00%,0.00%,0.00%
