@@ -1,0 +1,8 @@
+{
+  "use_case": {
+    "type": "custom",
+    "name": "document_qa_rag",
+    "description": "I need to answer questions from long documents using RAG and retrieval-augmented generation"
+  }
+}
+
