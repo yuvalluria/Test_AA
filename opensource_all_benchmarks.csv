@@ -35,6 +35,10 @@ DeepSeek V3.1 Terminus (Non-reasoning),DeepSeek,DeepSeek training dataset,N/A,53
 DeepSeek V3.1 Terminus (Reasoning),DeepSeek,DeepSeek training dataset,N/A,89.70%,49.60%,57.70%,89.70%,79.20%,15.20%,57.00%,65.00%,79.80%,N/A,85.10%,40.60%,37.10%,28.40%
 DeepSeek-OCR,DeepSeek,DeepSeek training dataset,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 R1 1776,Perplexity,Perplexity training dataset,N/A,N/A,N/A,19.10%,N/A,N/A,N/A,N/A,N/A,N/A,95.40%,N/A,N/A,N/A,N/A
+Nova Pro,Amazon,Amazon training dataset,10.70%,7.00%,16.60%,25.00%,7.00%,49.90%,3.40%,38.10%,19.00%,23.30%,78.60%,69.10%,20.80%,14.00%,5.70%
+Nova Lite,Amazon,Amazon training dataset,10.70%,7.00%,10.40%,21.40%,7.00%,43.30%,4.60%,34.10%,17.70%,16.70%,76.50%,59.00%,13.90%,N/A,0.70%
+Nova Micro,Amazon,Amazon training dataset,8.00%,6.00%,8.30%,17.70%,6.00%,35.80%,4.70%,29.40%,9.70%,14.00%,70.30%,53.10%,9.40%,14.00%,1.40%
+Nova Premier,Amazon,Amazon training dataset,17.00%,17.30%,22.00%,32.30%,17.30%,56.90%,4.70%,36.20%,30.00%,31.70%,83.90%,73.30%,27.90%,38.30%,6.40%
 Phi-4,Microsoft Azure,Microsoft Azure training dataset,14.30%,18.00%,17.60%,22.70%,18.00%,57.50%,4.10%,23.50%,0.00%,23.10%,81.00%,71.40%,26.00%,0.00%,3.50%
 Phi-4 Mini Instruct,Microsoft Azure,Microsoft Azure training dataset,3.00%,6.70%,7.80%,15.70%,6.70%,33.10%,4.20%,21.10%,13.70%,12.60%,69.60%,46.50%,10.80%,8.20%,0.00%
 Phi-4 Multimodal Instruct,Microsoft Azure,Microsoft Azure training dataset,9.30%,N/A,N/A,12.40%,N/A,31.50%,4.40%,N/A,N/A,13.10%,69.30%,48.50%,11.00%,N/A,N/A
@@ -66,6 +70,7 @@ Granite 4.0 H 1B,IBM,IBM training dataset,N/A,6.30%,6.60%,13.70%,6.30%,26.30%,5.
 Granite 4.0 1B,IBM,IBM training dataset,N/A,6.30%,4.50%,13.30%,6.30%,28.10%,5.10%,20.50%,4.00%,4.70%,N/A,32.50%,8.70%,22.80%,0.00%
 Granite 4.0 H Small,IBM,IBM training dataset,N/A,13.70%,16.10%,22.70%,13.70%,41.60%,3.70%,31.50%,9.00%,25.10%,N/A,62.40%,20.90%,17.30%,2.10%
 Granite 4.0 Micro,IBM,IBM training dataset,N/A,6.00%,10.40%,16.20%,6.00%,33.60%,5.10%,24.80%,4.00%,18.00%,N/A,44.70%,11.90%,12.60%,1.40%
+Reka Flash 3,Reka AI,Reka AI training dataset,51.00%,33.70%,23.40%,25.90%,33.70%,52.90%,5.10%,30.40%,0.00%,43.50%,89.30%,66.90%,26.70%,0.00%,0.00%
 DeepHermes 3 - Mistral 24B Preview (Non-reasoning),Nous Research,Nous Research training dataset,4.70%,N/A,N/A,15.50%,N/A,38.20%,3.90%,N/A,N/A,19.50%,59.50%,58.00%,22.80%,N/A,N/A
 Hermes 4 - Llama-3.1 70B (Reasoning),Nous Research,Nous Research training dataset,N/A,68.70%,34.60%,39.20%,68.70%,69.90%,7.90%,31.30%,6.70%,65.30%,N/A,81.10%,34.10%,22.50%,4.30%
 DeepHermes 3 - Llama-3.1 8B Preview (Non-reasoning),Nous Research,Nous Research training dataset,0.00%,N/A,N/A,1.80%,N/A,27.00%,4.30%,N/A,N/A,8.50%,21.80%,36.50%,9.10%,N/A,N/A
@@ -190,6 +195,10 @@ MiniMax M1 80k,MiniMax,MiniMax training dataset,84.70%,61.00%,37.10%,46.20%,61.0
 Kimi K2,Moonshot AI,Moonshot AI training dataset,69.30%,57.00%,35.00%,48.10%,57.00%,76.60%,7.00%,41.50%,51.00%,55.60%,97.10%,82.40%,34.50%,61.10%,14.90%
 Llama 3.1 Tulu3 405B,Allen Institute for AI,Allen Institute for AI training dataset,13.30%,N/A,N/A,25.40%,N/A,51.60%,3.50%,N/A,N/A,29.10%,77.80%,71.60%,30.20%,N/A,N/A
 Granite 3.3 8B (Non-reasoning),IBM,IBM training dataset,4.70%,6.70%,7.60%,15.20%,6.70%,33.80%,4.20%,22.40%,4.30%,12.70%,66.50%,46.80%,10.10%,10.50%,0.00%
+Reka Flash (Sep '24),Reka AI,Reka AI training dataset,N/A,N/A,N/A,19.10%,N/A,N/A,N/A,N/A,N/A,N/A,52.90%,N/A,N/A,N/A,N/A
+Reka Core,Reka AI,Reka AI training dataset,N/A,N/A,N/A,19.40%,N/A,N/A,N/A,N/A,N/A,N/A,55.80%,N/A,N/A,N/A,N/A
+Reka Flash (Feb '24),Reka AI,Reka AI training dataset,N/A,N/A,N/A,18.70%,N/A,N/A,N/A,N/A,N/A,N/A,32.60%,N/A,N/A,N/A,N/A
+Reka Edge,Reka AI,Reka AI training dataset,N/A,N/A,N/A,18.50%,N/A,N/A,N/A,N/A,N/A,N/A,21.60%,N/A,N/A,N/A,N/A
 Hermes 3 - Llama-3.1 70B,Nous Research,Nous Research training dataset,2.30%,N/A,N/A,14.70%,N/A,40.10%,4.10%,N/A,N/A,18.80%,53.80%,57.10%,23.10%,N/A,N/A
 GLM-4.5 (Reasoning),Z AI,Z AI training dataset,87.30%,73.70%,43.30%,51.30%,73.70%,78.20%,12.20%,44.10%,48.30%,73.80%,97.90%,83.50%,34.80%,43.00%,21.30%
 Command-R+ (Aug '24),Cohere,Cohere training dataset,0.00%,N/A,N/A,7.10%,N/A,33.70%,5.00%,N/A,N/A,11.10%,40.20%,42.70%,12.20%,N/A,N/A
@@ -230,3 +239,4 @@ Qwen3 1.7B (Reasoning),Alibaba,Alibaba training dataset,51.00%,38.70%,11.70%,22.
 Qwen3 Max (Preview),Alibaba,Alibaba training dataset,N/A,75.00%,40.20%,48.50%,75.00%,76.40%,9.30%,48.00%,39.70%,65.10%,N/A,83.80%,37.00%,32.70%,18.40%
 Qwen3 0.6B (Reasoning),Alibaba,Alibaba training dataset,10.00%,18.00%,5.00%,14.20%,18.00%,23.90%,5.70%,23.30%,0.00%,12.10%,75.00%,34.70%,2.80%,21.10%,0.00%
 Qwen1.5 Chat 110B,Alibaba,Alibaba training dataset,N/A,N/A,N/A,10.50%,N/A,28.90%,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Yi-Large,01.AI,01.AI training dataset,6.70%,N/A,N/A,13.40%,N/A,36.30%,3.20%,N/A,N/A,10.80%,56.20%,58.60%,18.80%,N/A,N/A

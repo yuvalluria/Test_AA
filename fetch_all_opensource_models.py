@@ -68,7 +68,7 @@ def is_closed_model(model_name: str) -> bool:
     return False
 
 def is_open_source(model: Dict) -> bool:
-    """Check if model is open-source"""
+    """Check if model is open-source - filter out closed models even if API marks them as open-source"""
     model_name = model.get("name", "")
     model_lower = model_name.lower()
     
@@ -78,42 +78,24 @@ def is_open_source(model: Dict) -> bool:
         for allowed in OPEN_SOURCE_GROK_MODELS:
             if allowed.lower() in model_lower:
                 return True
-        # All other Grok models are closed
+        # All other Grok models are closed (even if API says open-source)
         return False
     
-    # Exclude closed models
+    # Exclude closed models (even if API marks them as open-source)
     if is_closed_model(model_name):
         return False
     
-    # Check provider
-    creator = model.get("model_creator", {})
-    creator_name = creator.get("name", "")
-    
-    if creator_name in OPEN_SOURCE_PROVIDERS:
-        return True
-    
-    # Check if model has open-source indicators
-    open_source_indicators = [
-        "llama", "qwen", "deepseek", "mistral", "mixtral", "codestral",
-        "devstral", "magistral", "ministral", "pixtral", "phi", "gemma",
-        "hermes", "nemotron", "glm", "kimi", "solar", "granite", "olmo",
-        "molmo", "tulu", "jamba", "arctic", "dbrx", "exaone", "ernie",
-        "cogito", "seed", "doubao", "ring", "ling", "apriel", "gpt-oss-",
-    ]
-    
-    for indicator in open_source_indicators:
-        if indicator in model_lower:
-            return True
-    
-    return False
+    # All other models from open_source=true endpoint should be open-source
+    return True
 
 def fetch_all_models() -> Optional[List[Dict]]:
-    """Fetch all LLM models from the API"""
+    """Fetch all open-source LLM models from the API"""
     headers = get_headers()
-    endpoint = f"{BASE_URL}/data/llms/models"
+    # Use open_source=true parameter to get only open-source models
+    endpoint = f"{BASE_URL}/data/llms/models?open_source=true"
     
     try:
-        print(f"Fetching models from {endpoint}...")
+        print(f"Fetching open-source models from {endpoint}...")
         response = requests.get(endpoint, headers=headers, timeout=60)
         
         if response.status_code == 200:
