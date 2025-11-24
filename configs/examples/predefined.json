@@ -1,0 +1,7 @@
+{
+  "use_case": {
+    "type": "predefined",
+    "name": "code_completion"
+  }
+}
+
