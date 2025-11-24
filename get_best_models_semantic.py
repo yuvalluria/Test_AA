@@ -23,41 +23,87 @@ except ImportError:
 PREDEFINED_USE_CASES = {
     'chatbot_conversational': {
         'description': 'Real-time conversational chatbots (short prompts, short responses). Fast interactive dialogue systems for customer service, personal assistants, and chat applications.',
-        'csv_file': 'opensource_chatbot_conversational.csv'
+        'csv_file': 'opensource_chatbot_conversational.csv',
+        'type': 'use_case'
     },
     'code_completion': {
         'description': 'Fast code completion/autocomplete (short prompts, short completions). IDE integration for real-time code suggestions, IntelliSense, and code hinting.',
-        'csv_file': 'opensource_code_completion.csv'
+        'csv_file': 'opensource_code_completion.csv',
+        'type': 'use_case'
     },
     'code_generation_detailed': {
         'description': 'Detailed code generation with explanations (medium prompts, long responses). Software development with code explanations, comments, and documentation.',
-        'csv_file': 'opensource_code_generation_detailed.csv'
+        'csv_file': 'opensource_code_generation_detailed.csv',
+        'type': 'use_case'
     },
     'translation': {
         'description': 'Document translation (medium prompts, medium responses). Multilingual translation, localization, and language conversion tasks.',
-        'csv_file': 'opensource_translation.csv'
+        'csv_file': 'opensource_translation.csv',
+        'type': 'use_case'
     },
     'content_generation': {
         'description': 'Content creation, marketing copy (medium prompts, medium responses). Blog posts, articles, marketing materials, and creative writing.',
-        'csv_file': 'opensource_content_generation.csv'
+        'csv_file': 'opensource_content_generation.csv',
+        'type': 'use_case'
     },
     'summarization_short': {
         'description': 'Short document summarization (medium prompts, short summaries). Brief summaries, executive summaries, and text condensation.',
-        'csv_file': 'opensource_summarization_short.csv'
+        'csv_file': 'opensource_summarization_short.csv',
+        'type': 'use_case'
     },
     'document_analysis_rag': {
         'description': 'RAG-based document Q&A (long prompts with context, medium responses). Retrieval-augmented generation for answering questions from documents, knowledge bases, and document search.',
-        'csv_file': 'opensource_document_analysis_rag.csv'
+        'csv_file': 'opensource_document_analysis_rag.csv',
+        'type': 'use_case'
     },
     'long_document_summarization': {
         'description': 'Long document summarization (very long prompts, medium summaries). Processing extensive documents, research papers, and large text files to extract key points.',
-        'csv_file': 'opensource_long_document_summarization.csv'
+        'csv_file': 'opensource_long_document_summarization.csv',
+        'type': 'use_case'
     },
     'research_legal_analysis': {
         'description': 'Research/legal document analysis (very long prompts, detailed analysis). Academic research, legal document review, scholarly analysis, and in-depth document examination.',
-        'csv_file': 'opensource_research_legal_analysis.csv'
+        'csv_file': 'opensource_research_legal_analysis.csv',
+        'type': 'use_case'
     }
 }
+
+# Subject-specific CSVs with descriptions for embedding
+SUBJECT_CSVS = {
+    'mathematics': {
+        'description': 'Mathematics problem solving, math calculations, mathematical reasoning, algebra, calculus, geometry, competition math, AIME problems, math tutoring, mathematical analysis, solving math problems, math solver, mathematical computation.',
+        'csv_file': 'opensource_mathematics.csv',
+        'type': 'subject',
+        'benchmark_columns': ['Math 500', 'AIME', 'AIME 2025', 'Math Index']
+    },
+    'reasoning': {
+        'description': 'Logical reasoning, long context reasoning, complex reasoning tasks, reasoning problems, analytical thinking, logical analysis, reasoning benchmarks.',
+        'csv_file': 'opensource_reasoning.csv',
+        'type': 'subject',
+        'benchmark_columns': ['AA-LCR', 'τ²-Bench Telecom']
+    },
+    'science': {
+        'description': 'Scientific reasoning, science problems, scientific code generation, scientific research, physics, chemistry, biology, scientific analysis, GPQA, scientific knowledge.',
+        'csv_file': 'opensource_science.csv',
+        'type': 'subject',
+        'benchmark_columns': ['SciCode', 'GPQA Diamond', 'Humanity\'s Last Exam']
+    },
+    'computer_science': {
+        'description': 'Computer science, programming, coding, software development, code generation, code completion, terminal commands, agentic workflows, coding benchmarks.',
+        'csv_file': 'opensource_computer_science.csv',
+        'type': 'subject',
+        'benchmark_columns': ['LiveCodeBench', 'IFBench', 'Terminal-Bench Hard', 'Coding Index']
+    },
+    'general_knowledge': {
+        'description': 'General knowledge, world knowledge, factual knowledge, knowledge retrieval, MMLU, intelligence, general understanding, knowledge base, factual information.',
+        'csv_file': 'opensource_general_knowledge.csv',
+        'type': 'subject',
+        'benchmark_columns': ['MMLU-Pro', 'Intelligence Index']
+    }
+}
+
+# Combine all for matching
+ALL_CSVS = {**PREDEFINED_USE_CASES, **SUBJECT_CSVS}
 
 # Embedding model configuration
 EMBEDDING_MODEL_NAME = 'sentence-transformers/all-MiniLM-L6-v2'
@@ -75,20 +121,28 @@ def get_embedding_model():
     return EMBEDDING_MODEL
 
 def generate_use_case_embeddings():
-    """Generate embeddings for all predefined use case descriptions"""
+    """Generate embeddings for all predefined use cases and subjects"""
     model = get_embedding_model()
     
-    use_case_texts = []
-    use_case_names = []
+    all_texts = []
+    all_names = []
     
+    # Add use cases
     for name, info in PREDEFINED_USE_CASES.items():
-        use_case_texts.append(info['description'])
-        use_case_names.append(name)
+        all_texts.append(info['description'])
+        all_names.append(name)
     
-    print(f"\nGenerating embeddings for {len(use_case_texts)} predefined use cases...")
-    embeddings = model.encode(use_case_texts, show_progress_bar=True)
+    # Add subjects
+    for name, info in SUBJECT_CSVS.items():
+        all_texts.append(info['description'])
+        all_names.append(name)
     
-    return dict(zip(use_case_names, embeddings))
+    print(f"\nGenerating embeddings for {len(all_texts)} use cases and subjects...")
+    print(f"  - {len(PREDEFINED_USE_CASES)} use cases")
+    print(f"  - {len(SUBJECT_CSVS)} subjects")
+    embeddings = model.encode(all_texts, show_progress_bar=True)
+    
+    return dict(zip(all_names, embeddings))
 
 def calculate_semantic_similarity(user_description: str, use_case_embeddings: Dict[str, np.ndarray]) -> List[Tuple[str, float]]:
     """Calculate cosine similarity between user description and all use case embeddings"""
@@ -129,6 +183,44 @@ def parse_score(score_str: str) -> float:
         return float(score_str.replace('%', '')) / 100.0
     except (ValueError, AttributeError):
         return 0.0
+
+def calculate_subject_score(model_row: Dict, benchmark_columns: List[str]) -> float:
+    """Calculate average score from subject CSV benchmark columns"""
+    scores = []
+    for col in benchmark_columns:
+        value = model_row.get(col, 'N/A')
+        score = parse_score(value)
+        if score > 0:  # Only include non-zero scores
+            scores.append(score)
+    
+    if scores:
+        return sum(scores) / len(scores)
+    return 0.0
+
+def load_models_from_subject_csv(csv_file: str, benchmark_columns: List[str]) -> List[Dict]:
+    """Load models from subject CSV and calculate scores"""
+    try:
+        with open(csv_file, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            models = []
+            for row in reader:
+                score = calculate_subject_score(row, benchmark_columns)
+                models.append({
+                    'Model Name': row['Model Name'],
+                    'Provider': row['Provider'],
+                    'Dataset': row['Dataset'],
+                    'Use Case Score': f"{score * 100:.2f}%" if score > 0 else 'N/A',
+                    'raw_score': score
+                })
+            # Sort by score
+            models.sort(key=lambda x: x['raw_score'], reverse=True)
+            # Remove raw_score
+            for model in models:
+                del model['raw_score']
+            return models
+    except FileNotFoundError:
+        print(f"Warning: {csv_file} not found.")
+        return []
 
 def combine_model_scores_weighted(models_list: List[List[Dict]], weights: List[float]) -> List[Dict]:
     """Combine scores from multiple use case CSVs with weighted averaging"""
@@ -195,14 +287,22 @@ def get_best_models_for_usecase(usecase_config: Dict, use_case_embeddings: Dict[
     
     if usecase_type == 'predefined':
         # Direct match to predefined use case
-        if usecase_name not in PREDEFINED_USE_CASES:
-            raise ValueError(f"Unknown predefined use case: {usecase_name}. Available: {list(PREDEFINED_USE_CASES.keys())}")
+        if usecase_name not in ALL_CSVS:
+            available = list(PREDEFINED_USE_CASES.keys()) + list(SUBJECT_CSVS.keys())
+            raise ValueError(f"Unknown predefined use case/subject: {usecase_name}. Available: {available}")
         
-        csv_file = PREDEFINED_USE_CASES[usecase_name]['csv_file']
-        models = load_models_from_csv(csv_file)
+        csv_info = ALL_CSVS[usecase_name]
+        csv_file = csv_info['csv_file']
+        
+        # Handle subject CSVs differently
+        if csv_info.get('type') == 'subject':
+            benchmark_columns = csv_info.get('benchmark_columns', [])
+            models = load_models_from_subject_csv(csv_file, benchmark_columns)
+        else:
+            models = load_models_from_csv(csv_file)
         
         if not models:
-            raise FileNotFoundError(f"CSV file {csv_file} not found. Please run create_usecase_scores.py first.")
+            raise FileNotFoundError(f"CSV file {csv_file} not found.")
         
         return models, {usecase_name: 1.0}
     
@@ -234,18 +334,28 @@ def get_best_models_for_usecase(usecase_config: Dict, use_case_embeddings: Dict[
         else:
             print(f"  → Using {len(relevant_matches)} matches above {threshold} threshold")
         
-        # Load models from relevant use cases
+        # Load models from relevant use cases and subjects
         models_list = []
         weights = []
         match_info = {}
         
         for match_name, similarity_score in relevant_matches:
-            csv_file = PREDEFINED_USE_CASES[match_name]['csv_file']
-            models = load_models_from_csv(csv_file)
-            if models:
-                models_list.append(models)
-                weights.append(similarity_score)
-                match_info[match_name] = similarity_score
+            if match_name in ALL_CSVS:
+                csv_info = ALL_CSVS[match_name]
+                csv_file = csv_info['csv_file']
+                
+                # Handle subject CSVs differently (they have benchmark columns)
+                if csv_info.get('type') == 'subject':
+                    benchmark_columns = csv_info.get('benchmark_columns', [])
+                    models = load_models_from_subject_csv(csv_file, benchmark_columns)
+                else:
+                    # Use case CSV (already has Use Case Score column)
+                    models = load_models_from_csv(csv_file)
+                
+                if models:
+                    models_list.append(models)
+                    weights.append(similarity_score)
+                    match_info[match_name] = similarity_score
         
         if not models_list:
             raise ValueError("No matching use cases found. Please provide a more descriptive use case.")
