@@ -21,6 +21,16 @@ CLOSED_MODELS = [
     "gpt-4", "gpt-3.5", "gpt-5",
     "o1", "o1-mini", "o1-pro", "o3", "o3-mini", "o3-pro", "o4",
     "gemini", "claude", "sonnet",
+    # Amazon Nova models (not open-source)
+    "nova pro", "nova lite", "nova micro", "nova premier",
+    # PALM-2 (not open-source)
+    "palm-2", "palm2",
+    # Yi-Large (not in open-source list)
+    "yi-large",
+    # Extra Reka models (only Reka Flash 3 is open-source)
+    "reka flash (sep", "reka flash (feb", "reka core", "reka edge",
+    # Preview versions that might be duplicates
+    "gemma 3n e4b instruct preview",
 ]
 
 # Only these Grok models are open-source
@@ -57,6 +67,13 @@ def is_closed_model(model_name: str) -> bool:
             if allowed.lower() in model_lower:
                 return False
         # All other Grok models are closed
+        return True
+    
+    # Special handling for Reka models - only Reka Flash 3 is open-source
+    if "reka" in model_lower:
+        if "reka flash 3" in model_lower or "reka flash3" in model_lower:
+            return False
+        # All other Reka models are closed
         return True
     
     for closed in CLOSED_MODELS:
