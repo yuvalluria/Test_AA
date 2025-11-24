@@ -1,0 +1,50 @@
+{
+  "subjects": {
+    "mathematics": {
+      "subject_type": "mathematics",
+      "csv_file": "opensource_mathematics.csv",
+      "evaluation_datasets": [
+        "Math 500",
+        "AIME",
+        "AIME 2025",
+        "Math Index"
+      ]
+    },
+    "reasoning": {
+      "subject_type": "reasoning",
+      "csv_file": "opensource_reasoning.csv",
+      "evaluation_datasets": [
+        "AA-LCR",
+        "τ²-Bench Telecom"
+      ]
+    },
+    "science": {
+      "subject_type": "science",
+      "csv_file": "opensource_science.csv",
+      "evaluation_datasets": [
+        "SciCode",
+        "GPQA Diamond",
+        "Humanity's Last Exam"
+      ]
+    },
+    "computer_science": {
+      "subject_type": "computer_science",
+      "csv_file": "opensource_computer_science.csv",
+      "evaluation_datasets": [
+        "LiveCodeBench",
+        "IFBench",
+        "Terminal-Bench Hard",
+        "Coding Index"
+      ]
+    },
+    "general_knowledge": {
+      "subject_type": "general_knowledge",
+      "csv_file": "opensource_general_knowledge.csv",
+      "evaluation_datasets": [
+        "MMLU-Pro",
+        "Intelligence Index"
+      ]
+    }
+  }
+}
+
