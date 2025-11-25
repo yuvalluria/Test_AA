@@ -28,6 +28,37 @@ CLOSED_MODELS = [
     "gemma 3n e4b instruct preview",
 ]
 
+# Additional models to exclude (preview versions, duplicates, etc.)
+# Use exact matching to avoid excluding valid versions like "1.2" when excluding "1"
+EXCLUDE_EXACT_MODELS = [
+    "codestral (jan '25)",
+    "devstral medium",
+    "jamba 1.5 large",
+    "jamba 1.5 mini",
+    "jamba instruct",
+    "llama 65b",
+    "magistral medium 1",  # Exclude version 1, but keep 1.2
+    "magistral small 1",   # Exclude version 1, but keep 1.2
+    "ministral 3b",
+    "mistral large (feb '24)",
+    "mistral medium",      # Exclude base version, but keep 3.1
+    "mistral medium 3",    # Exclude version 3, but keep 3.1
+    "mistral saba",
+    "mistral small (feb '24)",
+    "qwq 32b-preview",
+    "qwen chat 14b",
+    "qwen chat 72b",
+    "qwen1.5 chat 110b",
+    "qwen2 instruct 72b",
+    "qwen3 max (preview)",
+    "solar pro 2 (preview) (non-reasoning)",
+    "solar pro 2 (preview) (reasoning)",
+    "sonar",
+    "sonar pro",
+    "sonar reasoning",
+    "sonar reasoning pro",
+]
+
 # Only these Grok models are open-source
 OPEN_SOURCE_GROK_MODELS = [
     "grok-1", "grok 2 (dec '24)", "grok 2 (dec 24)", "grok-2 (dec '24)",
@@ -69,6 +100,20 @@ def is_open_source(model: Dict) -> bool:
     """Check if model is open-source"""
     model_name = model.get("name", "")
     model_lower = model_name.lower()
+    
+    # Check for excluded models (preview versions, duplicates, etc.)
+    # Use exact matching to avoid excluding valid versions
+    for exclude in EXCLUDE_EXACT_MODELS:
+        # Check if the model name exactly matches or starts with the exclude pattern
+        # But be careful not to exclude "1.2" when excluding "1"
+        if exclude == model_lower or model_lower.startswith(exclude + " "):
+            # Special cases: allow 1.2 versions even if we exclude "1"
+            if "magistral medium 1.2" in model_lower or "magistral small 1.2" in model_lower:
+                continue
+            # Allow 3.1 version even if we exclude "3"
+            if "mistral medium 3.1" in model_lower:
+                continue
+            return False
     
     if "grok" in model_lower:
         for allowed in OPEN_SOURCE_GROK_MODELS:
@@ -124,23 +169,23 @@ def extract_benchmark_scores(model_data: Dict) -> Dict[str, Optional[float]]:
     if not evaluations:
         return scores
     
-    # Map of API keys to CSV column names
+    # Map of API keys to CSV column names (matching the correct file format)
     benchmark_mapping = {
-        "aime": "AIME",
-        "aime_25": "AIME 2025",
-        "artificial_analysis_coding_index": "Coding Index",
-        "artificial_analysis_intelligence_index": "Intelligence Index",
-        "artificial_analysis_math_index": "Math Index",
-        "gpqa": "GPQA Diamond",
-        "hle": "Humanity's Last Exam",
-        "ifbench": "IFBench",
-        "lcr": "AA-LCR",
-        "livecodebench": "LiveCodeBench",
-        "math_500": "Math 500",
-        "mmlu_pro": "MMLU-Pro",
-        "scicode": "SciCode",
-        "tau2": "τ²-Bench Telecom",
-        "terminalbench_hard": "Terminal-Bench Hard",
+        "aime": "aime",
+        "aime_25": "aime_25",
+        "artificial_analysis_coding_index": "artificial_analysis_coding_index",
+        "artificial_analysis_intelligence_index": "artificial_analysis_intelligence_index",
+        "artificial_analysis_math_index": "artificial_analysis_math_index",
+        "gpqa": "gpqa",
+        "hle": "hle",
+        "ifbench": "ifbench",
+        "lcr": "lcr",
+        "livecodebench": "livecodebench",
+        "math_500": "math_500",
+        "mmlu_pro": "mmlu_pro",
+        "scicode": "scicode",
+        "tau2": "tau2",
+        "terminalbench_hard": "terminalbench_hard",
     }
     
     # Extract scores for each benchmark
@@ -203,23 +248,23 @@ def export_to_csv(models: List[Dict], filename: str = "opensource_all_benchmarks
     """Export open-source models with ALL benchmarks to CSV"""
     print(f"\nExporting to {filename}...")
     
-    # Define all benchmark columns in order
+    # Define all benchmark columns in order (matching the correct file format)
     benchmark_columns = [
-        "AIME",
-        "AIME 2025",
-        "Coding Index",
-        "Intelligence Index",
-        "Math Index",
-        "GPQA Diamond",
-        "Humanity's Last Exam",
-        "IFBench",
-        "AA-LCR",
-        "LiveCodeBench",
-        "Math 500",
-        "MMLU-Pro",
-        "SciCode",
-        "τ²-Bench Telecom",
-        "Terminal-Bench Hard",
+        "aime",
+        "aime_25",
+        "artificial_analysis_coding_index",
+        "artificial_analysis_intelligence_index",
+        "artificial_analysis_math_index",
+        "gpqa",
+        "hle",
+        "ifbench",
+        "lcr",
+        "livecodebench",
+        "math_500",
+        "mmlu_pro",
+        "scicode",
+        "tau2",
+        "terminalbench_hard",
     ]
     
     # Prepare CSV headers
