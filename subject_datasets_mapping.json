@@ -1,45 +1,42 @@
 {
-  "subjects": {
-    "mathematics": {
-      "subject_type": "mathematics",
-      "evaluation_datasets": [
-        "Math 500",
-        "AIME",
-        "AIME 2025",
-        "Math Index"
-      ]
-    },
-    "reasoning": {
-      "subject_type": "reasoning",
-      "evaluation_datasets": [
-        "AA-LCR",
-        "τ²-Bench Telecom"
-      ]
-    },
-    "science": {
-      "subject_type": "science",
-      "evaluation_datasets": [
-        "SciCode",
-        "GPQA Diamond",
-        "Humanity's Last Exam"
-      ]
-    },
-    "computer_science": {
-      "subject_type": "computer_science",
-      "evaluation_datasets": [
-        "LiveCodeBench",
-        "IFBench",
-        "Terminal-Bench Hard",
-        "Coding Index"
-      ]
-    },
-    "general_knowledge": {
-      "subject_type": "general_knowledge",
-      "evaluation_datasets": [
-        "MMLU-Pro",
-        "Intelligence Index"
-      ]
-    }
+  "mathematics": {
+    "subject_type": "mathematics",
+    "evaluation_datasets": [
+      "Math 500",
+      "AIME",
+      "AIME 2025",
+      "Math Index"
+    ]
+  },
+  "reasoning": {
+    "subject_type": "reasoning",
+    "evaluation_datasets": [
+      "AA-LCR",
+      "τ²-Bench Telecom"
+    ]
+  },
+  "science": {
+    "subject_type": "science",
+    "evaluation_datasets": [
+      "SciCode",
+      "GPQA Diamond",
+      "Humanity's Last Exam"
+    ]
+  },
+  "computer_science": {
+    "subject_type": "computer_science",
+    "evaluation_datasets": [
+      "LiveCodeBench",
+      "IFBench",
+      "Terminal-Bench Hard",
+      "Coding Index"
+    ]
+  },
+  "general_knowledge": {
+    "subject_type": "general_knowledge",
+    "evaluation_datasets": [
+      "MMLU-Pro",
+      "Intelligence Index"
+    ]
   }
 }
-
