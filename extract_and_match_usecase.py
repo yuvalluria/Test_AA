@@ -204,21 +204,9 @@ def extract_and_match_usecase(user_text: str) -> Dict:
     best_match_name, best_match_score = similarities[0]
     best_match_info = ALL_CSVS[best_match_name]
     
-    # Threshold for matching: if similarity is too low, use user's exact text
-    # This handles cases like "QA medical expert" that don't match our predefined use cases
-    SIMILARITY_THRESHOLD = 0.4  # If best match is below 40%, use exact user input
-    
-    if best_match_score >= SIMILARITY_THRESHOLD:
-        # Good match - use the predefined description
-        matched_description = best_match_info['description']
-    else:
-        # Poor match - use user's exact words to preserve their intent
-        matched_description = use_case_description
-    
-    # Build result
+    # Build result - only include use_case
     result = {
-        "use_case": use_case_description,
-        "matched_use_case_description": matched_description
+        "use_case": use_case_description
     }
     
     # Add optional fields only if present
