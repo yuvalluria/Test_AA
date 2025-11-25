@@ -204,24 +204,10 @@ def extract_and_match_usecase(user_text: str) -> Dict:
     best_match_name, best_match_score = similarities[0]
     best_match_info = ALL_CSVS[best_match_name]
     
-    # Get top 3 matches
-    top_matches = [
-        {
-            'name': name,
-            'description': ALL_CSVS[name]['description'],
-            'similarity_score': round(score, 4),
-            'type': ALL_CSVS[name]['type']
-        }
-        for name, score in similarities[:3]
-    ]
-    
     # Build result
     result = {
         "use_case": use_case_description,
-        "matched_use_case": best_match_name,
-        "matched_use_case_description": best_match_info['description'],
-        "similarity_score": round(best_match_score, 4),
-        "top_matches": top_matches
+        "matched_use_case_description": best_match_info['description']
     }
     
     # Add optional fields only if present
